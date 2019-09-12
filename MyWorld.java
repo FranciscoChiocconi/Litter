@@ -22,5 +22,13 @@ public class MyWorld extends World
         setBackground(bg);
         Person person = new Person(); //creates spongebob character
         addObject(person, 200, 300);//location of where spongebob spawns
+        Litter litter = new Litter();
+        addObject(litter, 1, 40);
+        int[][] setup = litter.getArray();
+        
+        for (int i = 0; i<setup.length; i++){
+            System.out.println(setup[i][0] + "," + setup[i][1]);
+        }
+        
     }
 }
