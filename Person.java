@@ -36,6 +36,8 @@ public class Person extends Actor
             setLocation(x - 4, y);
         
         }
+        if (getY()<600)
+            setLocation(getX(), 600);
     }
     
 }
