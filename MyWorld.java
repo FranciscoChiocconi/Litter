@@ -17,18 +17,19 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1200, 800, 1); 
-        GreenfootImage bg = new GreenfootImage("grass.jpg");
+        GreenfootImage bg = new GreenfootImage("background.jpg");
         bg.scale(getWidth(), getHeight());
         setBackground(bg);
-        Person person = new Person(); //creates spongebob character
-        addObject(person, 200, 300);//location of where spongebob spawns
+        initialize();
+    }
+    
+    public void initialize() {
+        Person person = new Person();
+        addObject(person, 200, 750);
+    }
+    
+    public void spawnLitter() {
         Litter litter = new Litter();
-        addObject(litter, 1, 40);
-        int[][] setup = litter.getArray();
-        
-        for (int i = 0; i<setup.length; i++){
-            System.out.println(setup[i][0] + "," + setup[i][1]);
-        }
-        
+        addObject(litter, Greenfoot.getRandomNumber(getWidth() - 100), 10);
     }
 }
