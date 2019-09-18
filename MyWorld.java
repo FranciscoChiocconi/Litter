@@ -30,6 +30,14 @@ public class MyWorld extends World
     
     public void spawnLitter() {
         Litter litter = new Litter();
-        addObject(litter, Greenfoot.getRandomNumber(getWidth() - 100), 10);
+        addObject(litter, Greenfoot.getRandomNumber(getWidth() - 100), 500);
+    }
+    
+    public void act() {
+        for (int i = 0; i < Litter.getLitter().length; i++) {
+            spawnLitter();
+        }
+        System.out.println(Litter.getLitter().length);
+    
     }
 }
