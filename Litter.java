@@ -14,15 +14,15 @@ public class Litter extends Actor
      */
     private static int [][] randomLitter = new int [15][2];
     private static boolean setup = true;
-    private String [] trash = {"blah.png","blah2.jpg"};
-    private String [] recycle = {"blah.png","blah2.jpg"};
-    private String [] compost = {"blah.png","blah2.jpg"};
+    private String [] trash = {"glass.png", "tire.png" };
+    private String [] recycle = {"waterbottle.png","cardboard.png", "paper.png"};
+    private String [] compost = {"banana.png","person.png"};
     private int classification, type;
     private static int iteration = 0;
     
     public void gameSetup() {
         for (int i=0;i<randomLitter.length;i++) {
-            int imagesNumber = 9;
+            int imagesNumber = 2;
             int classification = (int)(Math.random()*3 + 1);
             if (classification == 1) {
                 int picture = (int)(Math.random()*imagesNumber + 1);
@@ -39,17 +39,19 @@ public class Litter extends Actor
                 randomLitter[i][0] = 3;
                 randomLitter[i][1] = picture;
             }
+            System.out.println(randomLitter[i][0] + "," + randomLitter[i][1]);
         }
         setup = false;
     }
     
-    public int[][] getLitter() {
+    public static int[][] getLitter() {
         return randomLitter;
     }
     
     public Litter() {
+        Greenfoot.delay(20);
         classification = randomLitter[iteration][0];
-        type = randomLitter[iteration][1];
+        int type = randomLitter[iteration][1];
         iteration++;
         if (classification == 1) 
             setImage(trash[type]);
@@ -61,7 +63,7 @@ public class Litter extends Actor
     
     public void act() 
     {
-        if (setup){
+        if (setup == true){
             gameSetup();
         }
     }
