@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Sbob
+comment1.params=
+comment1.target=void\ act()
+comment2.params=
+comment2.target=boolean\ canCatchGold()
+comment3.params=
+comment3.target=boolean\ canCatchTrap()
+comment4.params=
+comment4.target=void\ catchGold()
+comment5.params=
+comment5.target=void\ catchTrap()
+numComments=6
