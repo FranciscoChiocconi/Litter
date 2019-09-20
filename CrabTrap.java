@@ -15,6 +15,7 @@ public class CrabTrap extends FallingObjects
             panel.add(answer);
             JOptionPane.showMessageDialog(null, panel, "Compost, Recycle, Trash?", JOptionPane.QUESTION_MESSAGE);
             System.out.println("ANSWER: (" + answer.getText() + ")");
+            counting++;
             if (answer.getText().toLowerCase().equals("recycle")) {
                System.out.println("Correct Answer!");  
                World world;

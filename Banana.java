@@ -15,6 +15,8 @@ public class Banana extends FallingObjects
             panel.add(answer);
             JOptionPane.showMessageDialog(null, panel, "Compost, Recycle, Trash?", JOptionPane.QUESTION_MESSAGE);
             System.out.println("ANSWER: (" + answer.getText() + ")");
+            counting++;
+            System.out.println("working");
             if (answer.getText().toLowerCase().equals("compost")) {
                System.out.println("Correct Answer!"); 
                World world;

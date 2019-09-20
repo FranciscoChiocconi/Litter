@@ -22,17 +22,17 @@ public class WaterWorld extends World
         Glass l = new Glass();//variable for crab trap
         addObject(l, (int)(Math.random()*300)+200, 420);
         cardboard c = new cardboard();//variable for crab trap
-        addObject(c, (int)(Math.random()*400)+300, 440);
+        addObject(c, (int)(Math.random()*400)+300, 400);
         Banana b = new Banana();//variable for crab trap
         addObject(b, (int)(Math.random()*300)+500, 480);
         Paper p = new Paper();//variable for crab trap
         addObject(p, (int)(Math.random()*500)+400, 480);
         Compost compost = new Compost(); //creates spongebob character
-        addObject(compost, 300, 300);//location of where spongebob spawns
+        addObject(compost, 300, 200);//location of where spongebob spawns
         Recycling recycle = new Recycling(); //creates spongebob character
-        addObject(recycle, 400, 300);//location of where spongebob spawns
+        addObject(recycle, 400, 200);//location of where spongebob spawns
         Trash trash = new Trash(); //creates spongebob character
-        addObject(trash, 500, 300);
+        addObject(trash, 500, 200);
     }
 
     public void act()
