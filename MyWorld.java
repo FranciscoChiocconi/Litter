@@ -53,13 +53,17 @@ public class MyWorld extends World
     
     public void spawnLitter() {
         Litter litter = new Litter(randomLitter[objNum][0], randomLitter[objNum][1]);
-        addObject(litter, Greenfoot.getRandomNumber(getWidth() - 100), 500);
+        addObject(litter, Greenfoot.getRandomNumber(getWidth() - 100), 10);
     }
     
     public void act() {
         if (objNum < randomLitter.length) {
-        spawnLitter();
-        objNum++;
+            if (Greenfoot.getRandomNumber(120) == 5 || Greenfoot.getRandomNumber(120) == 10) {
+            spawnLitter();
+            objNum++;
+            }
         }
+            
     }
+    
 }

@@ -16,8 +16,10 @@ public class Litter extends Actor
     private int classification, type;
     private String objImg;
     private String [] trash = {"glass.png", "tire.png" };
-    private String [] recycle = {"waterbottle.png","cardboard.jpg", "paper.png"};
-    private String [] compost = {"banana.jpg","pizza.png"};
+    private String [] recycle = {"waterbottle.png","cardboard.png", "paper.png"};
+    private String [] compost = {"banana.png","pizza.png"};
+    private int dropSpeed = 1;
+    private boolean onBottom = false;
     
     public Litter(int c, int t) {
         classification = c;
@@ -34,5 +36,34 @@ public class Litter extends Actor
         setImage(objImg);
     }
     
+    public void act() {
+        fall();
+        if (onBottom) {
+            getWorld().removeObject(this);
+        }
+    }
+    
+    public void fall()
+    {
+        if (!onBottom) 
+        {
+            this.setLocation(getX(), getY() + dropSpeed);
+            onBottom = checkBottom();
+        }
+        
+    }
+    
+    public boolean checkBottom()
+    {
+        if (getY() > 770)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+            
+    }
 
 }
