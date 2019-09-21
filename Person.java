@@ -8,36 +8,53 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Person extends Actor
 {
-    /**
-     * Act - do whatever the Person wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    
-    int [] RandomObject = new int [3];
+    private int collected = 0;
     
     public void act() 
     {
-        int x = this.getX();
-        int y = this.getY();
-        
-        if (Greenfoot.isKeyDown("w")){
-            setLocation(x, y - 4);
-        
+        if (canCollect())
+        {
+            collect();
+            collected = collected + 1;
         }
-        if (Greenfoot.isKeyDown("s")){
-            setLocation(x, y + 4);
-        
+        if (Greenfoot.isKeyDown("right"))
+        {
+            setLocation(getX() + 10, getY());
+        } 
+        if (Greenfoot.isKeyDown("left"))
+        {
+            setLocation(getX() - 10, getY());
         }
-        if (Greenfoot.isKeyDown("d")){
-            setLocation(x +4, y);
-        
+            
+    } 
+    
+    /**
+     * This method checks if spongebob can catch a gold coin.
+     */
+    private boolean canCollect()
+    {
+        Actor litterObj = getOneObjectAtOffset(0, 0, Litter.class);
+        if (litterObj != null)
+        {
+            return true;
         }
-        if (Greenfoot.isKeyDown("a")){
-            setLocation(x - 4, y);
-        
+        else 
+        {
+            return false;
         }
-        if (getY()<600)
-            setLocation(getX(), 600);
+    }
+        
+    /**
+     * This method will play a sound and remove the gold coin if spongebob
+     * touches a coin.
+     */
+    private void collect()
+    {
+        Actor litterObj = getOneObjectAtOffset(0, 0, Litter.class);
+        if (litterObj != null) 
+        {
+            getWorld().removeObject(litterObj);
+        }
     }
     
 }

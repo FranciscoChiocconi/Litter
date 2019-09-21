@@ -12,59 +12,58 @@ public class Litter extends Actor
      * Act - do whatever the Litter wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    private static int [][] randomLitter = new int [15][2];
-    private static boolean setup = true;
+    
+    private int classification, type;
+    private String objImg;
     private String [] trash = {"glass.png", "tire.png" };
     private String [] recycle = {"waterbottle.png","cardboard.png", "paper.png"};
-    private String [] compost = {"banana.png","person.png"};
-    private int classification, type;
-    private static int iteration = 0;
+    private String [] compost = {"banana.png","pizza.png"};
+    private int dropSpeed = 3;
+    private boolean onBottom = false;
     
-    public void gameSetup() {
-        for (int i=0;i<randomLitter.length;i++) {
-            int imagesNumber = 2;
-            int classification = (int)(Math.random()*3 + 1);
-            if (classification == 1) {
-                int picture = (int)(Math.random()*imagesNumber + 1);
-                randomLitter[i][0] = 1;
-                randomLitter[i][1] = picture;
-            }
-            else if (classification == 2) {
-                int picture = (int)(Math.random()*imagesNumber + 1);
-                randomLitter[i][0] = 2;
-                randomLitter[i][1] = picture;
-            }
-            else if (classification == 3){
-                int picture = (int)(Math.random()*imagesNumber + 1);
-                randomLitter[i][0] = 3;
-                randomLitter[i][1] = picture;
-            }
-            System.out.println(randomLitter[i][0] + "," + randomLitter[i][1]);
+    public Litter(int c, int t) {
+        classification = c;
+        type = t;
+        if (classification == 1){
+            objImg = trash[type];
         }
-        setup = false;
+        else if (classification == 2) {        
+            objImg = recycle[type];
+        }
+        else if (classification == 3) {
+            objImg = compost[type];  
+        }
+        setImage(objImg);
     }
     
-    public static int[][] getLitter() {
-        return randomLitter;
+    public void act() {
+        fall();
+        if (onBottom) {
+            getWorld().removeObject(this);
+        }
     }
     
-    public Litter() {
-        Greenfoot.delay(20);
-        classification = randomLitter[iteration][0];
-        int type = randomLitter[iteration][1];
-        iteration++;
-        if (classification == 1) 
-            setImage(trash[type]);
-        else if (classification == 2)
-            setImage(recycle[type]);
-        else if (classification == 3)
-            setImage(compost[type]);
-    }
-    
-    public void act() 
+    public void fall()
     {
-        if (setup == true){
-            gameSetup();
+        if (!onBottom) 
+        {
+            this.setLocation(getX(), getY() + dropSpeed);
+            onBottom = checkBottom();
         }
+        
     }
+    
+    public boolean checkBottom()
+    {
+        if (getY() > 770)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+            
+    }
+
 }
